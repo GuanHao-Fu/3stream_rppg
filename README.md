@@ -37,7 +37,7 @@ This article presents a deep-learning-based two-stream network to estimate remot
   pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
   
   # 3. Pull our code.
-  git clone our git path
+  git clone https://github.com/GuanHao-Fu/3stream_rppg.git
   cd MS_rppg
   
   # 4. Install other packages. This project doesn't have any special or difficult-to-install dependencies.
@@ -45,7 +45,7 @@ This article presents a deep-learning-based two-stream network to estimate remot
 ```
 
 ## Data preprocessing & build k-fold
-2. Before training model, it is necessary to prepare the traing model which datatype it want. Executing [dataset_preprocess.py] transfer the video data to [h5py] data. After bulid h5py file, excuting [built_k_fold,py] generate k-fold trainging and testing dataset 
+2. Before training model, it is necessary to prepare the traing model which datatype it want. Executing **dataset_preprocess.py** transfer the video data to **h5py** data. After bulid h5py file, excuting **built_k_fold,py** generate k-fold trainging and testing dataset 
 ```shell
   # dataset_preprocess
   cd utils
@@ -68,19 +68,20 @@ This article presents a deep-learning-based two-stream network to estimate remot
   python test.py --dataset_dir [kfold_DATASET_PATH] --checkpoint_dir [CHECKPOINT_PATH]
 
 ```
-The default video frame rate is 30Hz. Please change the frame rate when you using the dataset recorded by other frame rate. 
+The default video frame rate is **30Hz**. Please change the frame rate when you using the dataset recorded by other frame rate. 
 
 ## Note
-If you want to change the input image size for training and testing, you needed to check [train.py] and [test.py] file import different package. We write two types code for image size =36 and 72.
+If you want to change the input image size for training and testing, you needed to check **train.py** and **test.py** file import different package. We write two types code for image size =36 and 72.
 
-if the input image size =[36], uncomment following two lines code
+if the input image size = **36**, uncomment following two lines code
 ```shell
   from models36 import is_model_support, get_model
   from dataset.dataset_loader36 import dataset_loader
 ```
-if the input image size =[72], uncomment following two lines code
+if the input image size = **72**, uncomment following two lines code
 ```shell
 
   from models72 import is_model_support, get_model
   from dataset.dataset_loader72 import dataset_loader
 ```
+
