@@ -55,7 +55,7 @@ This article presents a deep-learning-based two-stream network to estimate remot
   python built_k_fold.py --root_dir [preprocessed_DATASET_PATH] --save_dir [saved_ DATASET_PATH]
 ```
 ## Training 
-3. 
+
 ```shell
 
   python train.py --dataset_dir [kfold_DATASET_PATH] --checkpoint_dir [CHECKPOINT_PATH]
