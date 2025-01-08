@@ -55,27 +55,32 @@ This article presents a deep-learning-based two-stream network to estimate remot
   python built_k_fold.py --root_dir [preprocessed_DATASET_PATH] --save_dir [saved_ DATASET_PATH]
 ```
 ## Training 
+3. 
+```shell
 
-`python train.py --exp_name test --exp_name [e.g., test] --data_dir [DATASET_PATH] --temporal [e.g., MMTS_CAN]`
+  python train.py --dataset_dir [kfold_DATASET_PATH] --checkpoint_dir [CHECKPOINT_PATH]
 
+```
 ## Inference 
 
-`python code/predict_vitals.py --video_path [VIDEO_PATH]`
+```shell
 
-The default video sampling rate is 30Hz. 
+  python test.py --dataset_dir [kfold_DATASET_PATH] --checkpoint_dir [CHECKPOINT_PATH]
 
-#### Note
+```
+The default video frame rate is 30Hz. Please change the frame rate when you using the dataset recorded by other frame rate. 
 
-During the inference, the program will generate a sample pre-processed frame. Please ensure it is in portrait orientation. If not, you can comment out line 30 (rotation) in the `inference_preprocess.py`. 
+## Note
+If you want to change the input image size for training and testing, you needed to check [train.py] and [test.py] file import different package. We write two types code for image size =36 and 72.
 
+if the input image size =[36], uncomment following two lines code
+```shell
+  from models36 import is_model_support, get_model
+  from dataset.dataset_loader36 import dataset_loader
+```
+if the input image size =[72], uncomment following two lines code
+```shell
 
-## Contact
-
-Please post your technical questions regarding this repo via Github Issues. 
-
-
-
-
-
-
-
+  from models72 import is_model_support, get_model
+  from dataset.dataset_loader72 import dataset_loader
+```
